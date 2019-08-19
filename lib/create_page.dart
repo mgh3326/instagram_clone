@@ -40,15 +40,16 @@ class _CreatePageState extends State<CreatePage> {
   }
 
   Widget _buildBody() {
-    return Column(
-      children: <Widget>[
-        _image == null ? Text('No Image') : Image.file(_image),
-        Text("No Image"),
-        TextField(
-          decoration: InputDecoration(hintText: '내용을 입력하세요'),
-          controller: textEditingController,
-        )
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          _image == null ? Text('No Image') : Image.file(_image),
+          TextField(
+            decoration: InputDecoration(hintText: '내용을 입력하세요'),
+            controller: textEditingController,
+          )
+        ],
+      ),
     );
   }
 
