@@ -15,33 +15,36 @@ class TabPage extends StatefulWidget {
 
 class _TabPageState extends State<TabPage> {
   int _selectedIndex = 0;
+
   List _pages;
 
   @override
   void initState() {
+    super.initState();
     _pages = [
       HomePage(widget.user),
-      SearchPage(),
-      AccountPage(),
+      SearchPage(widget.user),
+      AccountPage(widget.user)
     ];
   }
 
   @override
   Widget build(BuildContext context) {
+    print('tab_page created');
     return Scaffold(
-      body: Center(child: _pages[_selectedIndex]),
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-          fixedColor: Colors.black,
-          onTap: _onItemTapped,
-          currentIndex: _selectedIndex,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home), title: Text('Home')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.search), title: Text('Search')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle), title: Text('Account')),
-          ]),
+        fixedColor: Colors.black,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search), title: Text('Search')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), title: Text('account')),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 
